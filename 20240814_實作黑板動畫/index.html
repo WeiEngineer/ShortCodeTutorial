@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<title>20240814_實作黑板動畫</title>
+	<script src="https://cdn.jsdelivr.net/npm/vivus@latest/dist/vivus.min.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const v1 = new Vivus('svg1', {
+				type: 'oneByOne',
+				duration: 200,
+				start: 'manual',
+			});
+
+			const v2 = new Vivus('svg2', {
+				type: 'oneByOne',
+				duration: 200,
+				start: 'manual',
+			});
+
+			const svg1 = document.getElementById("svg1");
+			const svg2 = document.getElementById("svg2");
+
+			document.querySelectorAll(".blackboard").forEach((p) => {
+				p.addEventListener("mouseenter", (e) => {
+					if (e.target.contains(svg1)) {
+						v1.play();
+					}
+					else if (e.target.contains(svg2)) {
+						v2.play();
+					}
+				});
+
+				p.addEventListener("mouseleave", (e) => {
+					if (e.target.contains(svg1)) {
+						v1.stop();
+						v1.reset();
+					}
+					else if (e.target.contains(svg2)) {
+						v2.stop();
+						v2.reset();
+					}
+				});
+			})
+		});
+	</script>
+	<style>
+		.blackboard {
+			background-color: #2a3928;
+			border: #937d5e 3px solid;
+			display: inline-block;
+			min-width: 150px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="blackboard">
+		<svg id="svg1" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px"
+			viewBox="0 0 100 100" xml:space="preserve">
+			<g>
+				<path fill="none" stroke="#FFF" stroke-width="2"
+					d="M38.554,21.035c7.88,7.569,8.746,19.453,1.934,26.544
+		c-6.811,7.091-18.72,6.705-26.6-0.864C6.009,39.148,2.946,25.154,9.757,18.062C16.569,10.971,30.675,13.468,38.554,21.035z" />
+				<line fill="none" stroke="#FFF" x1="6.052" y1="30.056" x2="21.744" y2="13.718" />
+				<line fill="none" stroke="#FFF" x1="7.182" y1="35.76" x2="27.292" y2="14.823" />
+				<line fill="none" stroke="#FFF" x1="9.521" y1="40.444" x2="32.185" y2="16.849" />
+				<line fill="none" stroke="#FFF" x1="12.046" y1="44.947" x2="36.613" y2="19.369" />
+				<line fill="none" stroke="#FFF" x1="15.942" y1="48.46" x2="40.494" y2="22.899" />
+				<line fill="none" stroke="#FFF" x1="19.864" y1="50.985" x2="42.922" y2="26.979" />
+				<line fill="none" stroke="#FFF" x1="24.781" y1="52.663" x2="45.098" y2="31.51" />
+				<line fill="none" stroke="#FFF" x1="30.481" y1="52.515" x2="45.046" y2="37.35" />
+				<line fill="none" stroke="#FFF" x1="6.763" y1="34.308" x2="25.305" y2="52.118" />
+				<line fill="none" stroke="#FFF" x1="6.083" y1="26.596" x2="32.313" y2="51.789" />
+				<line fill="none" stroke="#FFF" x1="7.502" y1="21.333" x2="37.344" y2="49.995" />
+				<line fill="none" stroke="#FFF" x1="12.341" y1="16.296" x2="42.407" y2="45.174" />
+				<line fill="none" stroke="#FFF" x1="17.054" y1="14.611" x2="44.392" y2="40.87" />
+				<line fill="none" stroke="#FFF" x1="23.444" y1="14.015" x2="44.815" y2="34.542" />
+				<polyline fill="none" stroke="#FFF" stroke-width="3"
+					points="34.909,51.96 40.749,48.326 43.771,42.733 	" />
+				<line fill="none" stroke="#FFF" stroke-width="2" x1="40.671" y1="48.408" x2="59.054" y2="66.065" />
+				<line fill="none" stroke="#FFF" stroke-width="3" x1="59.054" y1="66.065" x2="73.014" y2="79.474" />
+			</g>
+			<g>
+				<path fill="none" stroke="#FFF" stroke-width="2"
+					d="M87.308,46.367c-7.783,7.667-19.687,8.207-26.588,1.202
+		c-6.901-7.003-6.187-18.898,1.595-26.565c7.782-7.667,21.855-10.345,28.758-3.341C97.973,24.666,95.088,38.698,87.308,46.367z" />
+				<line fill="none" stroke="#FFF" x1="79.185" y1="13.628" x2="95.085" y2="29.764" />
+				<line fill="none" stroke="#FFF" x1="73.45" y1="14.6" x2="93.827" y2="35.279" />
+				<line fill="none" stroke="#FFF" x1="68.705" y1="16.81" x2="91.668" y2="40.115" />
+				<line fill="none" stroke="#FFF" x1="64.135" y1="19.211" x2="89.026" y2="44.472" />
+				<line fill="none" stroke="#FFF" x1="60.516" y1="23.007" x2="85.391" y2="48.254" />
+				<line fill="none" stroke="#FFF" x1="57.884" y1="26.86" x2="81.245" y2="50.568" />
+				<line fill="none" stroke="#FFF" x1="56.069" y1="31.728" x2="76.656" y2="52.618" />
+				<line fill="none" stroke="#FFF" x1="56.063" y1="37.431" x2="70.82" y2="52.407" />
+				<line fill="none" stroke="#FFF" x1="74.914" y1="14.222" x2="56.602" y2="32.267" />
+				<line fill="none" stroke="#FFF" x1="82.643" y1="13.754" x2="56.736" y2="39.281" />
+				<line fill="none" stroke="#FFF" x1="87.865" y1="15.318" x2="58.391" y2="44.359" />
+				<line fill="none" stroke="#FFF" x1="92.767" y1="20.293" x2="63.071" y2="49.553" />
+				<line fill="none" stroke="#FFF" x1="94.321" y1="25.051" x2="67.321" y2="51.656" />
+				<line fill="none" stroke="#FFF" x1="94.741" y1="31.455" x2="73.633" y2="52.253" />
+				<polyline fill="none" stroke="#FFF" stroke-width="3"
+					points="56.494,41.872 59.967,47.809 65.473,50.984 	" />
+				<line fill="none" stroke="#FFF" stroke-width="2" x1="59.887" y1="47.729" x2="41.73" y2="65.618" />
+				<line fill="none" stroke="#FFF" stroke-width="3" x1="41.73" y1="65.618" x2="27.943" y2="79.204" />
+			</g>
+		</svg>
+	</div>
+
+	<div class="blackboard">
+		<svg id="svg2" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px"
+			viewBox="0 0 100 100" xml:space="preserve">
+			<path fill="none" stroke="#FFF" stroke-width="2" d="M32.995,60.699l-8.12-44.201c0,0,0.833-2.445,8.083-0.257c0,0,0.347-3.206,4.698-4.354
+			c4.5-1.188,6.594,1.896,6.594,1.896s0.953-3.991,7.627-3.991c6.832,0,6.867,2.621,7.248,3.97c0.4-1.318,2.633-3.023,7.563-2.188
+			c6.292,1.899,4.771,4.833,4.771,4.833s6.72-0.771,7.584,0.292l-8.671,44H32.995z" />
+			<path fill="none" stroke="#FFF" stroke-width="2" d="M51.684,83.366c10.32,0,18.688-8.118,18.688-18.133H32.995
+			C32.995,75.248,41.362,83.366,51.684,83.366z" />
+			<path fill="none" stroke="#FFF" stroke-width="2" d="M70.371,65.233H32.995v-4.534c0,0,15.323-1.719,18.964-1.719
+			c3.641,0,18.412,1.719,18.412,1.719V65.233z" />
+			<line fill="none" stroke="#FFF" stroke-width="2" x1="44.25" y1="13.783" x2="47.042" y2="60.699" />
+			<line fill="none" stroke="#FFF" stroke-width="2" x1="32.958" y1="16.241" x2="39.375" y2="60.699" />
+			<line fill="none" stroke="#FFF" stroke-width="2" x1="59.011" y1="13.311" x2="56.625" y2="60.699" />
+			<line fill="none" stroke="#FFF" stroke-width="2" x1="71.458" y1="16.408" x2="64.209" y2="60.699" />
+			<path fill="none" stroke="#FFF" stroke-width="2"
+				d="M31.209,50.979c0,0,10.333-2.197,20.75-2.197c10.416,0,20.327,2.197,20.327,2.197" />
+			<path fill="none" stroke="#FFF" stroke-width="2"
+				d="M28.898,40.75c0,0,11.469-2.197,23.029-2.197c11.563,0,22.563,2.197,22.563,2.197" />
+		</svg>
+	</div>
+</body>
+
+</html>
