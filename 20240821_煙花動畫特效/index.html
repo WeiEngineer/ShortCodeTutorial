@@ -50,7 +50,7 @@
 			const colors = ["#c7e9eb", "#99cdff", "#fbbc04", "#00ff39", "#ff732c", "#839583", "#ff732c"];
 			const getRandomColor = () => {
 				const len = colors.length;
-				return colors[Math.floor(Math.random() * (len + 1))];
+				return colors[Math.floor(Math.random() * len)];
 			}
 
 			document.addEventListener('click', function (e) {

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<title> </title>
+	<script src="https://cdn.jsdelivr.net/npm/@mojs/core" defer></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const setting = {
+				left: 0,
+				top: 0,
+				duration: 'rand(2000, 3000)',
+				radius: 'rand(5, 50)',
+				pathScale: 'rand(0.5, 5)',
+				swirlFrequency: 'rand(-3, 3)',
+				swirlSize: 'rand(10, 40)',
+			};
+
+			const shapes = [];
+			for (let i = 0; i < 20; i++) {
+				shapes.push(new mojs.ShapeSwirl({
+					...setting,
+				}));
+			}
+
+			const colors = ["#94baff", "#94b2ff", "#76b0e5", "#6ea0d9"];
+			const getRandomColor = () => {
+				const len = colors.length;
+				return colors[Math.floor(Math.random() * len)];
+			}
+
+			const getRandomNumber = (min, max) => {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+			document.addEventListener('click', function (e) {
+				shapes.forEach(a => a.tune({
+					x: e.pageX + getRandomNumber(-40, 40),
+					y: { [e.pageY]: e.pageY - 200 },
+					fill: getRandomColor()
+				}).generate().replay());
+			});
+		});
+	</script>
+	<style>
+		body {
+			background-color: #3e62b2;
+		}
+	</style>
+</head>
+
+<body>
+
+</body>
+
+</html>
