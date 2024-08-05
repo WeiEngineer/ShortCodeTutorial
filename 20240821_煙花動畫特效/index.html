@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<title> </title>
+	<script src="https://cdn.jsdelivr.net/npm/@mojs/core" defer></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			class firework extends mojs.CustomShape {
+				getShape() { return '<line x1="26.649" y1="2.563" x2="26.649" y2="19.938"/><line x1="32.462" y1="10.016" x2="26.649" y2="23.641"/><line x1="12.75" y1="1.75" x2="26.649" y2="23.375"/><line  x1="20.928" y1="5.672" x2="24.053" y2="14.359"/><circle  cx="17.75" cy="24.236" r="2.769"/><circle  cx="32.462" cy="21.766" r="1.875"/><circle  cx="32.347" cy="31.938" r="3.972"/><circle  cx="17.438" cy="31.063" r="1.5"/><line  x1="11.5" y1="14.75" x2="21.875" y2="21.068"/><line  x1="8.75" y1="20.625" x2="25" y2="23.375"/><line   x1="24.5" y1="25" x2="6.75" y2="38.875"/><line   x1="21.875" y1="25" x2="11.5" y2="26.938"/><line  x1="23.728" y1="22.36" x2="1.375" y2="12.563"/><line  x1="25.929" y1="25.969" x2="23.438" y2="34.625"/><line   x1="24.5" y1="25" x2="17.75" y2="37.125"/><line   x1="14.012" y1="30.25" x2="7.5" y2="32.875"/><line   x1="13.25" y1="24.236" x2="8.125" y2="24.236"/><line   x1="12.75" y1="10.625" x2="18.938" y2="16.828"/><line   x1="27.813" y1="23.641" x2="47.625" y2="6.875"/><line   x1="40.5" y1="6.875" x2="33.006" y2="16.125"/><line   x1="48.75" y1="16.828" x2="29.313" y2="22.943"/><line   x1="30.808" y1="24.236" x2="45" y2="24.236"/><line   x1="28.375" y1="25.516" x2="46" y2="40.75"/><line   x1="26.795" y1="25.969" x2="30.25" y2="42.375"/><line   x1="25.313" y1="37.125" x2="24.5" y2="44.125"/><line   x1="30.808" y1="31.563" x2="39.031" y2="45"/><line   x1="34.276" y1="27.111" x2="46" y2="29.563"/><line   x1="21.125" y1="37.125" x2="17.438" y2="46.125"/><line  x1="15" y1="37.125" x2="7.5" y2="45"/><circle  cx="22.491" cy="16.125" r="4.804"/>'; }
+				getLength() { return 50; }
+			};
+
+			mojs.addShape('firework', firework);
+
+			const initSetting = {
+				shape: 'firework',
+				fill: 'none',
+				strokeWidth: { 10: 0 },
+				scale: { 0: 1 },
+				delay: 0,
+				duration: 300,
+				left: 50,
+				top: 50,
+				opacity: { 0: 1 },
+			};
+			const initShape = new mojs.Shape({
+				...initSetting,
+			});
+
+			const setting = {
+				...initSetting,
+				parent: initShape.el,
+				strokeWidth: { 'rand(1, 20)': 0 },
+				scale: { 0: 'rand(1, 4)' },
+				delay: 'rand(0, 1000)',
+				x: 'rand(-100, 100)',
+				y: 'rand(-100, 100)',
+				rotate: 'rand(0, 359)',
+			};
+
+			const shapes = [];
+			for (let i = 0; i < 6; i++) {
+				shapes.push(new mojs.Shape({
+					...setting,
+				}));
+			}
+
+			const colors = ["#c7e9eb", "#99cdff", "#fbbc04", "#00ff39", "#ff732c", "#839583", "#ff732c"];
+			const getRandomColor = () => {
+				const len = colors.length;
+				return colors[Math.floor(Math.random() * (len + 1))];
+			}
+
+			document.addEventListener('click', function (e) {
+				initShape.tune({ x: e.pageX, y: e.pageY, stroke: getRandomColor() }).replay()
+				shapes.forEach(a => a.tune({ stroke: getRandomColor() }).generate().replay());
+			});
+		});
+	</script>
+	<style>
+		body {
+			background-color: black;
+		}
+	</style>
+</head>
+
+<body>
+
+</body>
+
+</html>
