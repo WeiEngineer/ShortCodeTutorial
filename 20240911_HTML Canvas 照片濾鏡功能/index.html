@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas 照片濾鏡功能</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', (e) => {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            const img = document.getElementById('img');
+            img.onload = (e) => {
+                canvas.width = e.target.width;
+                canvas.height = e.target.height;
+                ctx.filter = 'blur(2px) saturate(20%)';
+                ctx.drawImage(img, 0, 0, e.target.width, e.target.height);
+            };
+        });
+    </script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <img id="img" src="./a.JPG" />
+    <canvas id="canvas"></canvas>
+</body>
+
+</html>
