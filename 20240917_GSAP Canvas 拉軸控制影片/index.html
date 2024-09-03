@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GSAP Canvas 拉軸控制影片</title>
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', (e) => {
+			gsap.registerPlugin(ScrollTrigger);
+
+			const video = document.querySelector("video");
+			video.addEventListener('loadedmetadata', () => {
+				gsap.to(video, {
+					scrollTrigger: {
+						trigger: "body",
+						start: "top top",
+						end: "bottom top",
+						scrub: 5,
+						onUpdate: (self) => {
+							const duration = video.duration;
+							video.currentTime = duration * self.progress;
+						}
+					}
+				});
+			});
+		});
+	</script>
+	<style>
+		body {
+			height: 2000vh;
+		}
+
+		.container {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+		}
+
+		#video {
+			position: absolute;
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<video id="video">
+			<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+		</video>
+	</div>
+</body>
+</html>
