@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas 影片濾鏡功能</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', (e) => {
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+
+            video.addEventListener('play', (e) => {
+                canvas.width = e.target.clientWidth;
+                canvas.height = e.target.clientHeight;
+                draw();
+            });
+
+            const draw = () => {
+                if (video.paused || video.ended) {
+                    return;
+                }
+                ctx.filter = 'contrast(150%) hue-rotate(90deg)';
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                setTimeout(draw, 17);
+            }
+        });
+    </script>
+    <style></style>
+</head>
+
+<body>
+    <video id="video" controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+    </video>
+    <canvas id="canvas"></canvas>
+</body>
+
+</html>
