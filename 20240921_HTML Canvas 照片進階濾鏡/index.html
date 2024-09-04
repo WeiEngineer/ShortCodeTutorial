@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GSAP Canvas 拉軸控制影片</title>
+	<script>
+		document.addEventListener('DOMContentLoaded', (e) => {});
+	</script>
+	<style></style>
+</head>
+
+<body>
+	<img src="./a.JPG" />
+
+	<svg width="557" height="371">
+		<filter id="turbulence">
+			<feTurbulence type="turbulence" baseFrequency="0.01 0.1" numOctaves="50" seed="5" result="turbulence" />
+			<feDisplacementMap in="SourceGraphic" in2="turbulence" scale="70" xChannelSelector="B"
+				yChannelSelector="R" />
+		</filter>
+		<image href="./a.JPG" filter="url(#turbulence)" />
+	</svg>
+
+	<svg width="557" height="371">
+		<defs>
+			<filter id="cloud">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="10, 7" result="blurred" />
+				<feTurbulence type="turbulence" baseFrequency="0.01 0.1" numOctaves="10" seed="5" result="turbulence" />
+				<feDisplacementMap in="blurred" in2="turbulence" scale="40" xChannelSelector="R" yChannelSelector="B" />
+			</filter>
+		</defs>
+		<image href="./a.JPG" />
+		<ellipse fill="#fff" cx="50" cy="100" rx="100" ry="50" style="filter: url(#cloud)" />
+		<ellipse fill="#fff" cx="450" cy="180" rx="200" ry="30" style="filter: url(#cloud)" />
+		<ellipse fill="#fff" cx="300" cy="20" rx="200" ry="20" style="filter: url(#cloud)" />
+	</svg>
+
+</body>
+
+</html>
