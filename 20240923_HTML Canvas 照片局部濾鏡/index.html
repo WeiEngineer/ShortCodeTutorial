@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML Canvas 照片局部濾鏡</title>
+	<script>
+		document.addEventListener('DOMContentLoaded', (e) => {
+			const container = document.getElementById('container');
+			const brightnessImage = document.getElementById('brightnessImage');
+			const size = 200;
+			container.addEventListener('mousemove', (e) => {
+				const rect = container.getBoundingClientRect();
+				const x = e.clientX - rect.left;
+				const y = e.clientY - rect.top;
+				brightnessImage.style.clipPath = `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, ${x - size / 2}px ${y - size / 2}px, ${x - size / 2}px ${y + size / 2}px, ${x + size / 2}px ${y + size / 2}px, ${x + size / 2}px ${y - size / 2}px, ${x - size / 2}px ${y - size / 2}px)`;
+			});
+		});
+	</script>
+	<style>
+		.image {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<img src="./a.JPG" class="image" style="filter: saturate(150%);">
+		<img src="./a.JPG" class="image" style="filter: brightness(20%);" id="brightnessImage">
+	</div>
+</body>
+
+</html>
