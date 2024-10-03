@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		document.addEventListener('DOMContentLoaded', (e) => { });
+	</script>
+	<style>
+		:root {
+			--turn-duration: 10s;
+			--color-1: rgb(152, 210, 233);
+			--color-2: rgb(28, 28, 114);
+			--color-3: rgb(7, 21, 51);
+		}
+
+		body {
+			height: 100dvh;
+			margin: 0;
+			background: #111;
+			display: grid;
+		}
+
+		.scene {
+			position: relative;
+		}
+
+		.light {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			translate: -50% -50%;
+			width: calc(50% * var(--distance));
+			height: calc(50% * var(--distance));
+			animation: turn var(--turn-duration) linear infinite;
+		}
+
+		.light::after {
+			content: "";
+			position: absolute;
+			width: var(--size);
+			height: var(--size);
+			background: #fff;
+			box-shadow: 0 0 10px #fff, 0 0 30px #fff, 0 0 100px #fff;
+			border-radius: 50%;
+		}
+
+		.sphere {
+			--gradient-position: 30% center;
+			--gradient-stop-1: 0%;
+			--gradient-stop-2: 70%;
+			--gradient-stop-3: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			translate: -50% -50%;
+			border-radius: 50%;
+			width: 60px;
+			height: 60px;
+			background:
+				radial-gradient(circle at var(--gradient-position),
+					var(--color-1) var(--gradient-stop-1),
+					var(--color-2) var(--gradient-stop-2),
+					var(--color-3) var(--gradient-stop-3));
+			animation: turn var(--turn-duration) linear infinite;
+		}
+
+		.cube {
+			--lighting-blur: 10px;
+			--lighting-offset: 7px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			translate: -50% -50%;
+			width: 60px;
+			height: 60px;
+			animation: cube-lighting var(--turn-duration) linear infinite;
+			background: var(--color-3);
+			border-radius: 50%;
+		}
+
+		.scene-1 {
+			.light {
+				--size: 20px;
+				--distance: .4;
+			}
+		}
+
+		.scene-2 {
+			.light {
+				--size: 10px;
+				--distance: .6;
+			}
+		}
+
+		@keyframes turn {
+			to {
+				transform: rotate(1turn);
+			}
+		}
+
+		@keyframes cube-lighting {
+			from,
+			to {
+				box-shadow:
+					inset var(--lighting-offset) 0 var(--lighting-blur) var(--color-1);
+			}
+
+			25% {
+				box-shadow:
+					inset 0 var(--lighting-offset) var(--lighting-blur) var(--color-1);
+			}
+
+			50% {
+				box-shadow:
+					inset calc(-1 * var(--lighting-offset)) 0 var(--lighting-blur) var(--color-1);
+			}
+
+			75% {
+				box-shadow:
+					inset 0 calc(-1 * var(--lighting-offset)) var(--lighting-blur) var(--color-1);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="scene scene-1">
+		<div class="light"></div>
+		<div class="sphere"></div>
+	</div>
+
+	<div class="scene scene-2">
+		<div class="light"></div>
+		<div class="cube"></div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		document.addEventListener('DOMContentLoaded', (e) => {
+			document.body.addEventListener('input', e => {
+				if (e.target.id === 'prog') {
+					document.body.style.setProperty('--val', e.target.value);
+				}
+			})
+		});
+	</script>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		main,
+		section {
+			display: grid;
+		}
+
+		section,
+		[type=range],
+		figure {
+			grid-area: 1/1;
+		}
+
+		main {
+			width: min(100%, 50em);
+			padding: 1.5em;
+			min-height: 30em;
+			filter: drop-shadow(2px 2px 5px #121212);
+		}
+
+		figure {
+			translate: 0;
+		}
+
+		img,
+		[type=range] {
+			height: 100%;
+		}
+
+		img {
+			position: absolute;
+			width: 100%;
+			clip-path: inset(0 0 0 calc(var(--j)*var(--val)*1%));
+		}
+
+		[type=range] {
+			color: #FFF;
+			z-index: 1;
+			margin: 0 -2.5em;
+			background: none;
+		}
+
+		[type=range],
+		[type=range]::-webkit-slider-thumb {
+			appearance: none;
+		}
+
+		[type=range]::-webkit-slider-thumb {
+			--full: linear-gradient(red 0 0);
+			border: solid 3px currentcolor;
+			padding: 1em;
+			width: 5em;
+			height: 5em;
+			border-radius: 50%;
+			background: repeating-conic-gradient(from 60deg, currentcolor 0% 60deg, #0000 10% 50%) 0/45% space border-box;
+			mask: var(--full) content-box, var(--full) padding-box exclude, var(--full);
+			cursor: ew-resize;
+		}
+	</style>
+</head>
+
+<body style="--val: 50">
+	<svg style="display: none;">
+		<filter id="f">
+			<feColorMatrix in="SourceGraphic" type="saturate" values="10"></feColorMatrix>
+			<feColorMatrix values="0 0 0 0 0 
+								   0 0 0 0 0 
+								   0 0 0 0 0 
+								   1 0 -1 0 0"></feColorMatrix>
+			<feComposite in="SourceGraphic" operator="in" result="cut"></feComposite>
+			<feColorMatrix in="SourceGraphic" type="saturate" values="0"></feColorMatrix>
+			<feBlend in="cut"></feBlend>
+		</filter>
+	</svg>
+
+	<main>
+		<section>
+			<figure id="filtered" style="--j: 0">
+				<img style="filter:url(#f);" src="./a.jpg" />
+			</figure>
+			<figure id="original" style="--j: 1">
+				<img src="./a.jpg" />
+			</figure>
+		</section>
+		<input id="prog" type="range" />
+	</main>
+</body>
+
+</html>
