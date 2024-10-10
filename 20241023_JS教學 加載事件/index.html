@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		//DOM 載完後 立即觸發
+		document.addEventListener('DOMContentLoaded', (e) => {
+			alert("DOMContentLoaded")
+		});
+
+		document.addEventListener('readystatechange', () => {
+			if (document.readyState === 'interactive') {
+				alert("readystatechange interactive")
+			}
+			else if (document.readyState === 'complete') {
+				alert("readystatechange complete")
+			}
+		});
+
+		//整個資源 載完後 才被觸發
+		window.addEventListener('load', (e) => {
+			alert("load")
+		});
+		// window.onload = function () {
+		// 	alert("onload")
+		// }
+
+	</script>
+	
+	<style>
+		p {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transition: -50% -50%;
+		}
+	</style>
+</head>
+
+<body>
+	<p>加載事件</p>
+</body>
+
+</html>

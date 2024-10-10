@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		// 函數宣告
+		function msg1() {
+			alert('我是 msg1');
+		}
+		msg1();
+
+		//函數表達式
+		const msg2 = function () {
+			alert('我是 msg2');
+		}
+		msg2();
+
+		//箭頭函數
+		const msg3 = () => {
+			alert('我是 msg3');
+		}
+		msg3();
+
+		//Immediately Invoked Function Expression  定義完後馬上被執行
+		(function () {
+			alert('我是 IIFE 函數');
+		})();
+
+		(() => {
+			alert('我是 IIFE 箭頭函數');
+		})();
+
+
+		document.addEventListener('DOMContentLoaded', (e) => {
+
+			//匿名函數 通常與事件檢視器 一同使用
+			document.querySelector("button").onclick = function () {
+				alert('我是匿名函數，由 button 所觸發')
+			};
+
+		});
+	</script>
+	<style>
+		button {
+			font-size: 48px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transition: -50% -50%;
+		}
+	</style>
+</head>
+
+<body>
+	<button>button</button>
+</body>
+
+</html>

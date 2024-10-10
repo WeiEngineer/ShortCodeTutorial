@@ -1,0 +1,1 @@
+document.querySelector("button#b4").onclick = function () { alert("button 4") }
