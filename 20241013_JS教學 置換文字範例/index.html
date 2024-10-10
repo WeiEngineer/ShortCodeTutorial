@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>template</title>
+	<script>
+		document.addEventListener('DOMContentLoaded', (e) => {
+			let p = document.querySelector("p");
+
+			function rename() {
+				let name = prompt("請輸入名稱");
+
+				p.textContent = "Hellow " + name + " !";
+			}
+
+			p.onclick = rename;
+		});
+	</script>
+	<style>
+		p {
+			cursor: pointer;
+			font-size: 64px;
+			background-color: #70afa7;
+			color: #FFF;
+			padding: 10px;
+			display: block;
+			position: absolute;
+			top: 30%;
+			left: 50%;
+			translate: -50% -100%;
+		}
+	</style>
+</head>
+
+<body>
+	<p>Hellow Wei ~</p>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		function msg(e) {
+			alert('我是 ' + e.target.textContent);
+		}
+
+		document.addEventListener('DOMContentLoaded', (e) => {
+
+			//使用 DOM 的 addEventListener 方法
+			document.querySelector("button#b2").addEventListener("click", msg);
+
+			//內聯事件處理器
+			document.querySelector("button#b3").onclick = msg;
+		});
+	</script>
+	<style>
+		div {
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			translate: -50% -50%;
+		}
+
+		button {
+			font-size: 28px;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<!-- HTML 屬性 onclick -->
+		<button id="b1" onclick="msg(event)">Button 1</button>
+
+		<button id="b2">Button 2</button>
+
+		<button id="b3">Button 3</button>
+	</div>
+</body>
+
+</html>
