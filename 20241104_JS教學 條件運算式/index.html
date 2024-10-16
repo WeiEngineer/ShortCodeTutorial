@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		let v1 = 1;
+		if (v1 === 1) {
+			v1 = 2;
+		}
+		alert(v1);
+
+		if (v1 === 1) {
+			v1 = 2;
+		}
+		else {
+			v1 = 3;
+		}
+		alert(v1);
+
+		if (v1 === 1) {
+			v1 = 2;
+		}
+		else if (v1 === 3) {
+			v1 = 4;
+		}
+		else {
+			v1 = 5;
+		}
+		alert(v1);
+
+		if (v1 > 1) {
+			if (v1 < 5) {
+				v1 = 5;
+			}
+		}
+		if (v1 > 1 && v1 < 5) {
+			alert(`v1 > 1 && v1 < 5 = ${v1 > 1 && v1 < 5}`);
+		}
+
+		if (v1 < 1 || v1 > 2) {
+			alert(`v1 < 1 || v1 > 2 = ${v1 < 1 || v1 > 2}`);
+		}
+
+		switch (v1) {
+			case 3:
+				v1 = 10;
+				break;
+			case 5:
+				v1 = 11;
+				break;
+			default:
+				v1 = 12;
+				break;
+		}
+
+		let v2 = v1 === 11 ? 20 : 30;
+		alert(v2);
+	</script>
+	<style></style>
+</head>
+
+<body></body>
+
+</html>
