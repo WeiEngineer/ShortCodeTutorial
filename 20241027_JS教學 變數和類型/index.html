@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		var a = 1;
+		let b = 2;
+
+		if (true) {
+			var a = 10;
+			let b = 20;
+			alert("a=" + a);
+			alert("b=" + b);
+		}
+
+		alert("a=" + a);
+		alert("b=" + b);
+
+		(function () {
+			var a = 100;
+			alert("a=" + a);
+			alert("this.a=" + this.a);
+		})();
+		
+		alert("a=" + a);
+
+		alert("this.a=" + this.a);
+		alert("this.b=" + this.b); //undefined
+
+		// number
+		let n = 10;
+
+		// string
+		let s = "string";
+
+		//boolern
+		let bool = true;
+
+		//array
+		let arr = ["a", "b"];
+
+		//Object
+		let obj = { "a": 1, "b": 2 };
+		alert("obj.a=" + obj.a);
+
+		const v = "a";
+		v = "c"; //error
+	</script>
+	<style></style>
+</head>
+
+<body></body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		let s1 = "This is a Test";
+		let s2 = 'This is a Test';
+
+		let s3 = "I have an 'item' and they also have";
+		let s4 = 'I have an "item" and they also have';
+
+		// I have an "item" and they also have
+		let s5 = "I have an \"item\" and they also have";
+
+		// I have an 'item' and they also have
+		let s6 = 'I have an \'item\' and they also have';
+
+		/* 
+			I have an item
+			 and they also have
+		*/
+		let s7 = 'I have an item \n and they also have';
+
+		let s8 = "1" + 2; // 12
+		let s9 = "1" + "2"; // 12
+
+		let v1 = 1, v2 = "2";
+
+		let s10 = "1" + " , " + "2"; // 1 , 2
+		let s11 = v1 + " , " + v2; // 1 , 2
+
+		let s12 = `${v1} , ${v2}`; // 1 , 2
+		let s13 = `${v1 * 2} , ${v2}`; // 2 , 2
+	</script>
+	<style></style>
+</head>
+
+<body></body>
+
+</html>
