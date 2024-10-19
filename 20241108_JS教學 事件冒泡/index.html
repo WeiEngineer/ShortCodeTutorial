@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			document.querySelectorAll("#containerA button , #containerA div").forEach(v => {
+				v.addEventListener("click", (e) => {
+					// e.currentTarget 當前的元素，可能不是觸發的元素
+					// e.target 觸發的元素，無論事件傳遞到哪，始終指向當初觸發的元素
+					alert(`${e.currentTarget.id} click`);
+					if (e.currentTarget.id === "buttonB-2") {
+						e.stopPropagation();
+					}
+				})
+			});
+
+			document.querySelector("#containerB button")
+				.addEventListener("click", (e) => alert(`${e.currentTarget.id} click`));
+
+			document.querySelector("#containerB div")
+				.addEventListener("click", (e) => alert(`${e.currentTarget.id} click`), { capture: true });
+		})
+	</script>
+	<style>
+		#containerA div,
+		#containerB div {
+			display: block;
+			padding: 50px;
+		}
+
+		button {
+			font-size: 30px;
+
+		}
+	</style>
+</head>
+
+<body>
+	<div id="containerA">
+		<div id="divA">
+			<button id="buttonA">點我 A</button>
+		</div>
+
+		<div id="divB">
+			<button id="buttonB-1">點我 B-1</button>
+			<button id="buttonB-2">點我 B-2</button>
+		</div>
+	</div>
+	<hr />
+	<div id="containerB">
+		<div id="divA">
+			<button id="buttonA">點我 A</button>
+		</div>
+	</div>
+</body>
+
+</html>

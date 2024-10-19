@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>template</title>
+	<script>
+		for (let i = 1; i <= 3; i++) {
+			alert(`for i=${i}`);
+		}
+
+		let numbers = [10, 20, 30];
+		for (let i = 0; i < numbers.length; i++) {
+			alert(`for numbers[${i}]=${numbers[i]}`);
+		}
+
+		numbers.forEach((v, i) => alert(`forEach numbers[${i}]=${numbers[i]}`));
+
+		for (let i = 1; i <= 3; i++) {
+			if (i === 2) {
+				break;
+			}
+			alert(`for break i=${i}`);
+		}
+
+		for (let i = 1; i <= 3; i++) {
+			if (i === 2) {
+				continue;
+			}
+			alert(`for continue i=${i}`);
+		}
+
+		let v = 1
+		while (v <= 3) {
+			alert(`while v=${i}`);
+			v += 1;
+		}
+
+		v = 1
+		do {
+			alert(`do while v=${i}`);
+			v++;
+		}
+		while (v <= 3)
+
+	</script>
+	<style></style>
+</head>
+
+<body></body>
+
+</html>
